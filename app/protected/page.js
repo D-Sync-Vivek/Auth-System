@@ -1,10 +1,9 @@
-'use client'
 import React from 'react'
-import SignupForm from '@/components/SignupForm'
+import Protected from '@/components/Protected'
 const page = () => {
   return (
     <div>
-      <SignupForm/>
+      <Protected/>
     </div>
   )
 }
