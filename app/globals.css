@@ -1,2 +1,31 @@
 @import "tailwindcss";
 
+/* 🎨 Color Palette 
+
+Primary (buttons, highlights): #4F46E5 (Indigo 600)
+Primary Hover: #4338CA (Indigo 700)
+
+Secondary (subtle accents, links): #14B8A6 (Teal 500)
+
+Background: #F9FAFB (Gray 50)
+Card/Container: #FFFFFF (White)
+Border/Line: #E5E7EB (Gray 200)
+
+Text Primary: #111827 (Gray 900)
+Text Secondary: #6B7280 (Gray 500)
+
+Error: #EF4444 (Red 500)
+Success: #22C55E (Green 500) */
+
+:root{
+    --primary: #4F46E5;
+    --primary-hover: #4338CA;
+    --secondary: #14B8A6;
+    --background: #F9FAFB;
+    --card: #FFFFFF;
+    --border: #E5E7EB;
+    --primary-text: #111827;
+    --secondary-text: #6B7280;
+    --error: #EF4444;
+    --success: #22C55E;
+}

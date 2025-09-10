@@ -8,7 +8,6 @@ export async function GET() {
     const token = cookieStore.get("token")?.value;
 
     // if no token return 401 unauthorised.
-    console.log("Checking token")
     if (!token) {
       return Response.json(
         {

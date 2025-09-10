@@ -2,17 +2,27 @@
 import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const SignupForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const isFormValid = name !== "" && email !== "" && password !== "";
 
   const router = useRouter();
+
+   // Effect to simulate loading on page load
+  useEffect(() => {
+    // Simulate loading delay (e.g., 1 second)
+    const timer = setTimeout(() => setLoading(false), 500);
+
+    // Cleanup timer on unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,12 +50,28 @@ const SignupForm = () => {
       setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="h-12 w-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        <span className="ml-4 text-lg">loading....</span>
+      </div>
+    );
+  }
+
   return (
     <>
-      <form onSubmit={handleSubmit} className="shadow-2xl mt-5 md:w-[50vw] mx-auto">
-      <div className="flex justify-center text-3xl mt-10">SignUp Page</div>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col justify-center items-center min-h-screen mx-auto"
+      >
+        <h1 className="text-3xl font-bold text-[var(--primary-text)] mt-10">
+        SignUp Page
+      </h1>
+
         <div className="mt-5 flex flex-col justify-center items-center ">
-          <div className="flex justify-between items-center gap-5 w-[23vw] mx-auto my-2">
+          <div className="flex flex-col justify-between md:items-start   mx-auto my-2">
             <span>Enter Name</span>
             <input
               value={name}
@@ -57,7 +83,7 @@ const SignupForm = () => {
               className="border-1 border-gray-400 px-2 p-1 rounded-md"
             />
           </div>
-          <div className="flex justify-between items-center gap-5 w-[23vw] mx-auto my-2">
+          <div className="flex flex-col justify-between md:items-start   mx-auto my-2">
             <span>Enter E-mail</span>
             <input
               value={email}
@@ -65,11 +91,11 @@ const SignupForm = () => {
                 setEmail(e.target.value);
               }}
               type="email"
-              placeholder="Enter E-mail"
+              placeholder="Enter Your E-mail"
               className="border-1 border-gray-400 px-2 p-1 rounded-md"
             />
           </div>
-          <div className="flex justify-between items-center gap-5 w-[23vw] mx-auto my-2">
+          <div className="flex flex-col justify-between md:items-start mx-auto my-2">
             <span>Enter Password</span>
             <input
               value={password}
@@ -77,22 +103,24 @@ const SignupForm = () => {
                 setPassword(e.target.value);
               }}
               type="password"
-              placeholder="Enter Password"
+              placeholder="Set Your Password"
               className="border-1 border-gray-400 px-2 p-1 rounded-md"
             />
           </div>
-          <button
-            type="submit"
-            disabled={!isFormValid || loading}
-            className={`border-1 border-gray-500 px-2 p-1 rounded-md m-5 ${
-              isFormValid
-                ? "bg-white cursor-pointer"
-                : "bg-gray-200 cursor-not-allowed"
-            }`}
-          >
-            {loading ? "Signing up" : "Sign up"}
-          </button>
-          { message && <div className="p-10">{message}</div>}
+          <div className="signup-btn">
+            <button
+              type="submit"
+              disabled={!isFormValid || loading}
+              className={`text-white border-1 border-gray-500 px-4 py-2 rounded-lg m-5 ${
+                isFormValid
+                  ? "bg-[var(--primary)] cursor-pointer"
+                  : "bg-[var(--secondary-text)] cursor-not-allowed"
+              }`}
+            >
+              {loading ? "Signing up" : "Sign up"}
+            </button>
+          </div>
+          {message && <div className="p-10">{message}</div>}
         </div>
       </form>
     </>
