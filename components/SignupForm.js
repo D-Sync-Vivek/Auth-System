@@ -1,8 +1,6 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 const SignupForm = () => {
   const [name, setName] = useState("");
@@ -11,16 +9,11 @@ const SignupForm = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const router = useRouter();
   const isFormValid = name !== "" && email !== "" && password !== "";
 
-  const router = useRouter();
-
-   // Effect to simulate loading on page load
   useEffect(() => {
-    // Simulate loading delay (e.g., 1 second)
     const timer = setTimeout(() => setLoading(false), 500);
-
-    // Cleanup timer on unmount
     return () => clearTimeout(timer);
   }, []);
 
@@ -45,7 +38,7 @@ const SignupForm = () => {
         router.push("/login");
       }
     } catch (error) {
-      setMessage("An error occured");
+      setMessage("An error occurred");
     } finally {
       setLoading(false);
     }
@@ -61,69 +54,70 @@ const SignupForm = () => {
   }
 
   return (
-    <>
+    <div className="min-h-screen flex items-center justify-center overflow-hidden px-3 md:px-0">
+
+      {/* Signup form */}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center min-h-screen mx-auto"
+        className="flex flex-col justify-center items-center bg-white/80 p-8 rounded-lg shadow-lg"
       >
-        <h1 className="text-3xl font-bold text-[var(--primary-text)] mt-10">
-        SignUp Page
-      </h1>
+        <h1 className="text-4xl font-bold text-[var(--primary-text)] mt-2 mb-5">
+          SignUp Page
+        </h1>
+        <p className="text-gray-600 mb-6">
+          Fill in your credentials and click on the Sign up button
+        </p>
 
-        <div className="mt-5 flex flex-col justify-center items-center ">
-          <div className="flex flex-col justify-between md:items-start   mx-auto my-2">
+        <div className="flex flex-col gap-4 w-full max-w-sm">
+          <label>
             <span>Enter Name</span>
             <input
               value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
+              onChange={(e) => setName(e.target.value)}
               type="text"
               placeholder="Enter UserName"
-              className="border-1 border-gray-400 px-2 p-1 rounded-md"
+              className="border border-gray-400 px-2 py-1 rounded-md w-full"
             />
-          </div>
-          <div className="flex flex-col justify-between md:items-start   mx-auto my-2">
+          </label>
+
+          <label>
             <span>Enter E-mail</span>
             <input
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Enter Your E-mail"
-              className="border-1 border-gray-400 px-2 p-1 rounded-md"
+              className="border border-gray-400 px-2 py-1 rounded-md w-full"
             />
-          </div>
-          <div className="flex flex-col justify-between md:items-start mx-auto my-2">
+          </label>
+
+          <label>
             <span>Enter Password</span>
             <input
               value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Set Your Password"
-              className="border-1 border-gray-400 px-2 p-1 rounded-md"
+              className="border border-gray-400 px-2 py-1 rounded-md w-full"
             />
-          </div>
-          <div className="signup-btn">
-            <button
-              type="submit"
-              disabled={!isFormValid || loading}
-              className={`text-white border-1 border-gray-500 px-4 py-2 rounded-lg m-5 ${
-                isFormValid
-                  ? "bg-[var(--primary)] cursor-pointer"
-                  : "bg-[var(--secondary-text)] cursor-not-allowed"
-              }`}
-            >
-              {loading ? "Signing up" : "Sign up"}
-            </button>
-          </div>
-          {message && <div className="p-10">{message}</div>}
+          </label>
+
+          <button
+            type="submit"
+            disabled={!isFormValid || loading}
+            className={`text-white px-4 py-2 rounded-lg mt-4 ${
+              isFormValid
+                ? "bg-[var(--primary)] cursor-pointer"
+                : "bg-[var(--secondary-text)] cursor-not-allowed"
+            }`}
+          >
+            {loading ? "Signing up..." : "Sign up"}
+          </button>
         </div>
+
+        {message && <div className="p-4 text-center">{message}</div>}
       </form>
-    </>
+    </div>
   );
 };
 
