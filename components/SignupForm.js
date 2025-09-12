@@ -64,7 +64,7 @@ const SignupForm = () => {
         <h1 className="text-4xl font-bold text-[var(--primary-text)] mt-2 mb-5">
           SignUp Page
         </h1>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 mb-6 text-center">
           Fill in your credentials and click on the Sign up button
         </p>
 

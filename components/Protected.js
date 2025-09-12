@@ -60,7 +60,7 @@ const Protected = () => {
         <div>{userName && <p>Welcome {userName}! 😁</p>} </div>
         <div className="fixed top-3 right-5">
           <button
-            className="border-1 px-2 p-1 rounded-md hover:cursor-pointer bg-blue-500 text-white hover:bg-blue-700"
+            className="border-1 px-2 p-1 rounded-md hover:cursor-pointer bg-indigo-500 text-white hover:bg-indigo-700"
             onClick={() => logout()}
           >
             Logout
