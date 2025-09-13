@@ -92,7 +92,7 @@ const LoginForm = () => {
             disabled={!isFormValid || loading}
             className={`text-white rounded-lg px-4 py-2 mt-4 transition ${
               isFormValid
-                ? "cursor-pointer bg-[var(--primary)]"
+                ? "cursor-pointer bg-[var(--primary)] hover:bg-indigo-700"
                 : "cursor-not-allowed bg-[var(--secondary-text)]"
             }`}
           >

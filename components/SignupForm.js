@@ -107,7 +107,7 @@ const SignupForm = () => {
             disabled={!isFormValid || loading}
             className={`text-white px-4 py-2 rounded-lg mt-4 ${
               isFormValid
-                ? "bg-[var(--primary)] cursor-pointer"
+                ? "bg-[var(--primary)] cursor-pointer hover:bg-indigo-700"
                 : "bg-[var(--secondary-text)] cursor-not-allowed"
             }`}
           >

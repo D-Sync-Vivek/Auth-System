@@ -4,7 +4,7 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <nav className="fixed w-full bg-white">
-      <ul className="flex gap-5 p-3 text-md">
+      <ul className="flex gap-5 p-2 text-md">
         <li className=" text-gray-700 hover:text-black border-gray-200 py-1 px-3 rounded-lg border  transition-transform duration-150 text-base">
           <Link
             href="/"

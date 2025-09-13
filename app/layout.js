@@ -1,6 +1,5 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Auth System",
@@ -13,7 +12,7 @@ export default function RootLayout({ children }) {
       <body className="bg-gradient-animate">
         <Navbar/>
         {children}
-        <Footer/>
+       
         </body>
     </html>
   );
