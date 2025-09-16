@@ -58,7 +58,7 @@ const Protected = () => {
     <>
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <div>{userName && <p>Welcome {userName}! 😁</p>} </div>
-        <div className="fixed top-3 right-5">
+        <div className="fixed top-2 right-5">
           <button
             className="border-1 px-2 p-1 rounded-md hover:cursor-pointer bg-indigo-500 text-white hover:bg-indigo-700"
             onClick={() => logout()}
